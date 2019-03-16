@@ -1,20 +1,14 @@
 package website.fedulov.testmodel;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.stereotype.Component;
 
-@Entity
-@Table(name = "some_table")
+@Component
 public class SomeData {
 
-	@Id
 	private Integer id;
 
 	private String name;
 
-    @Column(name = "val")
 	private String value;
 
     public Integer getId() {
@@ -39,6 +33,17 @@ public class SomeData {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+
+    public SomeData(Integer id, String name, String value) {
+        this.id = id;
+        this.name = name;
+        this.value = value;
+    }
+
+    public SomeData() {
+
     }
 
     @Override

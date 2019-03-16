@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="website.fedulov.dao.SomeDataMapper">
+    <resultMap id="BaseResultMap" type="website.fedulov.testmodel.SomeData">
+
+        <id column="id" property="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result column="name" property="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result column="val" property="value" jdbcType="VARCHAR" javaType="java.lang.String"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, name, val
+    </sql>
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from some_table
+    </select>
+
+    <insert id="save" parameterType="website.fedulov.testmodel.SomeData">
+        INSERT  into some_table (id,name,val) VALUES (#{someData.id},#{someData.name},#{someData.value})
+    </insert>
+
+</mapper>

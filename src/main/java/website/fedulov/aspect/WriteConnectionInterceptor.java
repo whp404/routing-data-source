@@ -1,7 +1,5 @@
 package website.fedulov.aspect;
 
-import website.fedulov.routing.DbContextHolder;
-import website.fedulov.routing.DbType;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
+import website.fedulov.routing.DbContextHolder;
+import website.fedulov.routing.DbType;
 
 @Aspect
 @Component
@@ -30,7 +30,7 @@ public class WriteConnectionInterceptor implements Ordered {
 		return order;
 	}
 
-    @Pointcut(value="execution(public * *(..))")
+	@Pointcut(value = "execution(public * website.fedulov.SomeDataService.*(..))")
     public void anyPublicMethod() { }
 
 	@Around("@annotation(writeConnection)")
